@@ -3,7 +3,7 @@ import { Save, Trash2 } from 'lucide-react'
 import { supabase } from '../../lib/supabaseClient'
 import ConfirmDialog from '../../components/ConfirmDialog'
 
-const EMPTY_FORM = { name: 'Dessert Cup', type: 'cup', flavour: '', price: '', stock_qty: '' }
+const EMPTY_FORM = { name: 'Dessert Cup', type: 'cup', flavour: '', price: '', stock_qty: '', description: '' }
 
 export default function AdminProducts() {
   const [products, setProducts] = useState([])
@@ -38,6 +38,7 @@ export default function AdminProducts() {
         price: product.price,
         stock_qty: product.stock_qty,
         is_active: product.is_active,
+        description: product.description,
       })
       .eq('id', product.id)
     if (saveError) setError(saveError.message)
@@ -89,6 +90,7 @@ export default function AdminProducts() {
           flavour: form.flavour,
           price: Number(form.price),
           stock_qty: Number(form.stock_qty),
+          description: form.description,
         })
         .select()
         .single()
@@ -122,6 +124,7 @@ export default function AdminProducts() {
           <tr>
             <th>Photo</th>
             <th>Flavour</th>
+            <th>Description</th>
             <th>Type</th>
             <th>Price (R)</th>
             <th>Stock</th>
@@ -152,6 +155,15 @@ export default function AdminProducts() {
               </td>
               <td>
                 <input style={{ width: 120 }} value={p.flavour} onChange={(e) => updateField(p.id, 'flavour', e.target.value)} />
+              </td>
+              <td>
+                <textarea
+                  style={{ width: 180, fontFamily: 'inherit', fontSize: '0.85rem', padding: 6, borderRadius: 8, border: '1px solid var(--line)' }}
+                  rows={2}
+                  value={p.description || ''}
+                  onChange={(e) => updateField(p.id, 'description', e.target.value)}
+                  placeholder="Short description shown on the product page"
+                />
               </td>
               <td>
                 <select value={p.type} onChange={(e) => updateField(p.id, 'type', e.target.value)}>
@@ -223,6 +235,17 @@ export default function AdminProducts() {
         <div className="field">
           <label htmlFor="p-flavour">Flavour</label>
           <input id="p-flavour" required value={form.flavour} onChange={(e) => setForm({ ...form, flavour: e.target.value })} />
+        </div>
+        <div className="field">
+          <label htmlFor="p-description">Description</label>
+          <textarea
+            id="p-description"
+            rows={3}
+            value={form.description}
+            onChange={(e) => setForm({ ...form, description: e.target.value })}
+            style={{ padding: '11px 14px', borderRadius: 12, border: '1.5px solid var(--line)', fontFamily: 'inherit', fontSize: '0.95rem', resize: 'vertical' }}
+            placeholder="What makes this flavour special?"
+          />
         </div>
         <div className="field">
           <label htmlFor="p-price">Price (R)</label>

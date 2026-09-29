@@ -796,3 +796,141 @@ button {
 .admin-logout:hover {
   background: rgba(255, 255, 255, 0.08);
 }
+
+/* ---------- Product detail page (revamp) ---------- */
+.pd-page {
+  padding: 40px 24px 64px;
+}
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-bottom: 36px;
+}
+@media (max-width: 760px) {
+  .pd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.pd-image {
+  border-radius: var(--radius-cup);
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  background: var(--cream-200);
+}
+.pd-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.pd-image-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cocoa-700);
+  font-family: var(--font-display);
+  text-align: center;
+  padding: 20px;
+}
+.pd-info h1 {
+  font-size: 2rem;
+  margin-bottom: 2px;
+}
+.pd-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 18px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: var(--cream-200);
+  color: var(--cocoa-700);
+}
+.tag-berry {
+  background: var(--berry-100);
+  color: var(--berry-600);
+}
+.tag-success {
+  background: #dcefdf;
+  color: var(--success-600);
+}
+.pd-price {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cocoa-900);
+  margin-bottom: 20px;
+}
+.pd-qty-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cocoa-700);
+  margin-bottom: 8px;
+}
+.pd-qty-pills {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.qty-pill {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: #fff;
+  font-weight: 600;
+  color: var(--cocoa-700);
+}
+.qty-pill.active {
+  background: var(--cocoa-900);
+  border-color: var(--cocoa-900);
+  color: #fff;
+}
+.pd-cta {
+  width: 100%;
+  max-width: 320px;
+  padding: 15px 22px;
+  font-size: 1rem;
+}
+
+.pd-tabs {
+  display: flex;
+  gap: 28px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.pd-tabs button {
+  background: none;
+  border: none;
+  padding: 12px 2px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cocoa-500);
+  border-bottom: 2px solid transparent;
+}
+.pd-tabs button.active {
+  color: var(--cocoa-900);
+  border-bottom-color: var(--caramel-600);
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.review-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px 18px;
+}
