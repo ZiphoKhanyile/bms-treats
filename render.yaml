@@ -1,0 +1,14 @@
+# Render Blueprint — lets Render auto-configure this as a static site
+# when you use "New > Blueprint" instead of "New > Static Site".
+# Optional: you can also just configure everything by hand in the
+# Render dashboard (see the deployment steps) and skip this file.
+services:
+  - type: web
+    runtime: static
+    name: bms-treats
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
