@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "bms-treats",
   "private": true,
   "version": "0.1.0",
