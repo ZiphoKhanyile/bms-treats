@@ -1,0 +1,27 @@
+<!--
+  Branded order slip — send this via a Supabase Edge Function (or any email
+  service, e.g. Resend) triggered on order insert. Placeholders like {{name}}
+  should be filled in server-side before sending.
+-->
+<div style="font-family: Inter, Arial, sans-serif; background:#FBF1DF; padding:32px;">
+  <div style="max-width:480px;margin:0 auto;background:#fff;border-radius:20px;overflow:hidden;">
+    <div style="background:#2E1B12;color:#FBF1DF;padding:24px;text-align:center;">
+      <div style="font-family:Georgia,serif;font-size:1.6rem;font-weight:700;">BMS Treats</div>
+      <div style="font-size:0.8rem;color:#d9c4ad;">Small Cups. Big Happiness.</div>
+    </div>
+    <div style="padding:24px;color:#2E1B12;">
+      <h2 style="margin-top:0;">Thanks for your order, {{buyer_name}}!</h2>
+      <p>Order <strong>#{{order_id}}</strong> is confirmed — cash on delivery.</p>
+      <table style="width:100%;border-collapse:collapse;margin:16px 0;">
+        {{order_items_rows}}
+      </table>
+      <p><strong>Total due on delivery: R{{total_amount}}</strong></p>
+      <p style="font-size:0.9rem;color:#6b3f26;">
+        Delivering to {{residence_name}}, {{building_name}}, Room {{room_number}}.
+      </p>
+      <a href="{{track_order_url}}" style="display:inline-block;margin-top:12px;background:#2E1B12;color:#FBF1DF;padding:12px 20px;border-radius:999px;text-decoration:none;">
+        Track your order
+      </a>
+    </div>
+  </div>
+</div>
